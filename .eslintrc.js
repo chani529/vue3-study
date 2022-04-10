@@ -5,7 +5,7 @@ module.exports = {
   },
   extends: [
     "plugin:vue/vue3-essential",
-    "eslint:recommended",
+    // "eslint:recommended",
     "plugin:prettier/recommended",
   ],
   parserOptions: {
@@ -14,5 +14,6 @@ module.exports = {
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "react/react-in-jsx-scope": "off",
   },
 };

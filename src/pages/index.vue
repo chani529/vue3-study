@@ -1,43 +1,46 @@
 <template>
-  <div class="wrapper">
-    <div class="image-cover">
-      <Background />
-      <div ref="cover" class="cover-text">
-        <p class="cover-text__header">
-          <b id="withU"> With U </b>
-          <b id="IU" class="accent"> IU </b>
-        </p>
-        <template>
-          <DateInfo />
+  <div class="image-cover">
+    <Background />
+    <div ref="cover" class="cover-text">
+      <p class="cover-text__header">
+        <b id="withU"> With U </b>
+        <b id="IU" class="accent"> IU </b>
+      </p>
+      <template v-if="!$device.isMobile">
+        <DateInfo />
+        <NuxtLink :to="$urls.main">
           <p class="cover-text__link">
             Go to Fansite
-            <img
-              class="img-link-arrow"
-              width="30px"
-              height="30px"
-              src="/img/arrow_yellow.png"
-            />
+            <img class="img-link-arrow" width="30px" height="30px" src="/img/arrow_yellow.png">
           </p>
-        </template>
-      </div>
+        </NuxtLink>
+      </template>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "IndexPage",
+  name: 'IndexPage',
   computed: {
     countDate() {
-      const day = 1000 * 60 * 60 * 24;
-      const debut = new Date(2008, 9 - 1, 23); // 월 -1 로 작성해야 함.
+      const day = 1000 * 60 * 60 * 24
+      const debut = new Date(2008, 9 - 1, 23) // 월 -1 로 작성해야 함.
 
-      const now = new Date();
-      const diffDate = now.getTime() - debut.getTime();
-      return Math.ceil(diffDate / day);
+      const now = new Date()
+      const diffDate = now.getTime() - debut.getTime()
+      return Math.ceil(diffDate / day)
     },
   },
-};
+  mounted() {
+    // TODO CHECK :: Mobile splash effect
+    if( this.$device.isMobile ) {
+      setTimeout(() => {
+        this.$router.push(this.$urls.main)
+      }, 3000)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scope>
@@ -61,7 +64,7 @@ export default {
   color: rgba(255, 255, 255, 0.8);
   font-size: 28px;
   line-height: 70px;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: italic;
 
   .accent {
@@ -70,19 +73,18 @@ export default {
 }
 
 .cover-text__header {
-  #withU,
-  #IU {
+  #withU, #IU {
     display: block;
     font-size: 50px;
     line-height: 60px;
     opacity: 0;
 
-    @include animation(slide-up-60, 1.5s);
+    @include animation(slide-up-60, 1.5s)
   }
 
   #IU {
-    animation-delay: 0.7s;
-    @include animation(slide-up-60, 1.5s, 0.7s);
+    animation-delay: .7s;
+    @include animation(slide-up-60, 1.5s, .7s)
   }
 }
 
@@ -108,9 +110,5 @@ export default {
   .image-cover {
     max-width: 50%;
   }
-}
-.wrapper {
-  height: 100vh;
-  position: relative;
 }
 </style>

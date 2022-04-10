@@ -1,11 +1,16 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <MainLayout></MainLayout>
 </template>
 
+<script>
+import MainLayout from "@/layouts/MainLayout.vue";
+export default {
+  name: "App",
+  components: {
+    MainLayout,
+  },
+};
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

@@ -1,0 +1,94 @@
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+      @content;
+  }
+
+  @-moz-keyframes #{$name} {
+      @content;
+  }
+
+  @-o-keyframes #{$name} {
+      @content;
+  }
+
+  @keyframes #{$name} {
+      @content;
+  }
+}
+
+@mixin animation ($animation, $duration, $delay: 0, $fillmode: forwards, $direction: forwards) {
+  @each $prefix in -webkit-, -moz-, -o-, '' {
+    #{$prefix}animation-name: $animation;
+    #{$prefix}animation-duration: $duration;
+    #{$prefix}animation-delay: $delay;
+    #{$prefix}animation-fill-mode: $fillmode;
+    #{$prefix}animation-direction: $direction;
+  }
+}
+
+@mixin match-parent {
+  width: 100%;
+  height: 100%
+}
+
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin slide-up ($px) {
+  @include keyframes(slide-up-#{$px}) {
+    from {
+      transform: translateY(#{$px}px);
+      opacity: 0;
+    }
+  
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    } 
+  }
+}
+
+@mixin slide-down ($px) {
+  @include keyframes(slide-down-#{$px}) {
+    from {
+      transform: translateY(-#{$px}px);
+      opacity: 0;
+    }
+  
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    } 
+  }
+}
+
+@mixin slide-left ($px) {
+  @include keyframes(slide-left-#{$px}) {
+    from {
+      transform: translateX(#{$px}px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+@mixin slide-right ($px) {
+  @include keyframes(slide-right-#{$px}) {
+    from {
+      transform: translateX(-#{$px}px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
