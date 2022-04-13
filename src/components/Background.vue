@@ -9,10 +9,7 @@ export default {
   // TODO :: Main title size for each device
   computed: {
     isMainPage() {
-      return (
-        this.$route.path === this.$urls.main ||
-        this.$route.path === this.$urls.mobile.main
-      );
+      return this.$route.path === this.$urls.main;
     },
   },
 };
