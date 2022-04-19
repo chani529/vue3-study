@@ -7,18 +7,7 @@
           <b id="withU"> With U </b>
           <b id="IU" class="accent"> IU </b>
         </p>
-        <template>
-          <DateInfo />
-          <p class="cover-text__link">
-            Go to Fansite
-            <img
-              class="img-link-arrow"
-              width="30px"
-              height="30px"
-              src="/img/arrow_yellow.png"
-            />
-          </p>
-        </template>
+        <router-view></router-view>
       </div>
     </div>
   </div>
